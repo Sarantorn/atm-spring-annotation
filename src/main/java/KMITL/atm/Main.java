@@ -1,22 +1,15 @@
 package KMITL.atm;
 
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Main {
     public static void main(String[] args) {
-
-        ApplicationContext context =
-                new AnnotationConfigApplicationContext(ATMConfig.class);
-
-
-
-        AtmUI atmUI = context.getBean(AtmUI.class);
+        ApplicationContext context = new ClassPathXmlApplicationContext("bean.xml");
+        /*Bank bank = context.getBean(Bank.class);
+        System.out.println(bank.getName());*/
+        AtmUI atmUI= context.getBean(AtmUI.class);
         atmUI.run();
-
-        /*String name = atm.validateCustomer(1,1234);
-        System.out.println(name + "has" +atm.getBalance());*/
-
 
     }
 }
